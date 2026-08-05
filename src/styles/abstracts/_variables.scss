@@ -139,3 +139,20 @@ $line-height-relaxed:       1.65;
 $letter-spacing-tight:      -0.014em;
 $letter-spacing-base:       normal;
 $letter-spacing-wide:       0.02em;
+
+
+/* -------------------------------------------------------- */
+/*                         Z-LEVELS                         */
+/* -------------------------------------------------------- */
+
+$z-index-base:              0;
+$z-index-sticky:            100;
+$z-index-sidebar:           200;
+$z-index-topbar:            300;
+$z-index-dropdown:          400;
+$z-index-drag:              500;
+$z-index-scrim:             600;
+$z-index-modal:             700;
+$z-index-tooltip:           800;
+$z-index-toast:             900;
+
