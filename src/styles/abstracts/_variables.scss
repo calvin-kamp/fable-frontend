@@ -1,0 +1,96 @@
+@use "sass:map";
+/* -------------------------------------------------------- */
+/*                          COLORS                          */
+/* -------------------------------------------------------- */
+
+$palette: (
+    neutral-0:      #ffffff,
+    neutral-50:     #f7f8fa,
+    neutral-100:    #eff1f4,
+    neutral-200:    #e2e5ea,
+    neutral-300:    #cbd0d9,
+    neutral-400:    #a2aab8,
+    neutral-500:    #78818f,
+    neutral-600:    #5a6371,
+    neutral-700:    #434b57,
+    neutral-800:    #2c333d,
+    neutral-900:    #1a1f26,
+
+    blue-50:        #eaf2fd,
+    blue-100:       #d0e2fa,
+    blue-200:       #a3c6f5,
+    blue-300:       #6ba4ec,
+    blue-400:       #3b82e0,
+    blue-500:       #0b63ce,
+    blue-600:       #0a55b0,
+    blue-700:       #08448c,
+    blue-800:       #063469,
+    blue-900:       #04244a,
+
+    green-50:       #e8f6f0,
+    green-500:      #1b7a55,
+    green-700:      #135a3e,
+
+    amber-50:       #fdf3e2,
+    amber-500:      #8a6212,
+    amber-700:      #67480d,
+
+    red-50:         #fdecec,
+    red-500:        #c3302b,
+    red-600:        #a8201b,
+    red-700:        #94211d,
+
+    purple-500:     #6c4bc7,
+
+    teal-500:       #0f7383,
+);
+
+$colors: (
+    body-bg:            map.get($palette, neutral-50),
+    body-text:          map.get($palette, neutral-900),
+
+    surface-raised:     map.get($palette, neutral-0),
+    surface-sunken:     map.get($palette, neutral-100),
+    surface-hover:      map.get($palette, neutral-100),
+    surface-pressed:    map.get($palette, neutral-200),
+    surface-selected:   map.get($palette, blue-50),
+
+    text-subtle:        map.get($palette, neutral-500),
+    text-secondary:     map.get($palette, neutral-600),
+    text-disabled:      map.get($palette, neutral-600),
+    text-inverse:       map.get($palette, neutral-0),
+    text-link:          map.get($palette, blue-600),
+    text-link-hover:    map.get($palette, blue-600),
+    text-danger:        map.get($palette, red-700),
+
+    border:             map.get($palette, neutral-300),
+    border-subtle:      map.get($palette, neutral-200),
+    border-strong:      map.get($palette, neutral-400),
+    border-danger:      map.get($palette, red-500),
+    border-focus:       map.get($palette, blue-500),
+
+    primary:            map.get($palette, blue-500),
+    primary-hover:      map.get($palette, blue-600),
+    primary-active:     map.get($palette, blue-700),
+
+    secondary:          map.get($palette, neutral-100),
+    secondary-hover:    map.get($palette, neutral-200),
+
+    danger:             map.get($palette, red-500),
+    danger-hover:       map.get($palette, red-700),
+
+    disabled-bg:        map.get($palette, neutral-100),
+    disabled-text:      map.get($palette, neutral-600),
+
+    type-epic:          map.get($palette, purple-500),
+    type-story:         map.get($palette, green-500),
+    type-task:          map.get($palette, blue-500),
+    type-bug:           map.get($palette, red-500),
+    type-subtask:       map.get($palette, teal-500),
+
+    prio-highest:       map.get($palette, red-600),
+    prio-high:          map.get($palette, red-500),
+    prio-medium:        map.get($palette, amber-500),
+    prio-low:           map.get($palette, blue-500),
+    prio-lowest:        map.get($palette, neutral-600),
+);
