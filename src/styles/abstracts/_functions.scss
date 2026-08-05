@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+@use './tokens' as *;
+
+/* -------------------------------------------------------- */
+/*                        FUNCTIONS                         */
+/* -------------------------------------------------------- */
+
+// Resolves a breakpoint token to its value — rejects raw lengths so media queries
+// can only ever be built from the defined scale
+@function breakpoint-value($bp) {
+    @if meta.type-of($bp) != string {
+        @error 'breakpoint(): only breakpoint tokens allowed (sm, md, lg).';
+    }
+
+    @if not map.has-key($breakpoints, $bp) {
+        @error 'breakpoint(): unknown breakpoint '#{$bp}'. Allowed: #{map.keys($breakpoints)}';
+    }
+
+    @return map.get($breakpoints, $bp);
+}

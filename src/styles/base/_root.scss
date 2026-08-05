@@ -1,0 +1,7 @@
+@use 'abstracts' as *;
+
+:root {
+    color-scheme: light;
+
+    @include token-to-css-vars($css-var-tokens);
+}

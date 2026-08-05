@@ -1,0 +1,60 @@
+@use 'sass:meta';
+@use './functions' as *;
+@use './tokens' as *;
+
+/* -------------------------------------------------------- */
+/*                         MIXINS                           */
+/* -------------------------------------------------------- */
+
+// Mobile-first media query from a breakpoint token; xs (0) emits no query at all
+@mixin breakpoint($bp) {
+    $breakpoint: breakpoint-value($bp);
+
+    @if $breakpoint == 0 {
+        @content;
+    } @else {
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+// Hover styles only on devices with a hover-capable pointer —
+// prevents sticky hover states on touch
+@mixin hoverable {
+    @media (any-hover: hover) and (any-pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+// The single focus style used app-wide
+@mixin focus-ring($color: $focus-ring-color, $width: $focus-ring-width, $offset: $focus-ring-offset) {
+    outline: $width solid $color;
+    outline-offset: $offset;
+}
+
+// Emits a map as CSS custom properties, recursing into nested maps and
+// joining keys with the prefix (color + primary -> --color-primary)
+@mixin token-to-css-vars($tokens, $prefix: null) {
+    @if meta.type-of($tokens) != 'map' {
+        @error 'token-to-css-vars(): Expected a map.';
+    }
+
+    @each $key, $value in $tokens {
+        $name: '#{$key}';
+
+        @if $prefix != null and $prefix != '' {
+            $name: '#{$prefix}-#{$key}';
+        }
+
+        @if meta.type-of($value) == 'map' {
+            @include token-to-css-vars($value, $name);
+        }
+
+        @else {
+            --#{$name}: #{$value};
+        }
+    }
+}
