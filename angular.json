@@ -30,8 +30,11 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
-            ]
+              "src/main.scss"
+            ],
+            "stylePreprocessorOptions": {
+                "includePaths": ["src", "src/styles"]
+            }
           },
           "configurations": {
             "production": {
