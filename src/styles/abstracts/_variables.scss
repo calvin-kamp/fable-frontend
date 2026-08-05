@@ -319,3 +319,16 @@ $z-index-toast:             900;
 $focus-ring-width:          0.125rem;
 $focus-ring-offset:         0.125rem;
 $focus-ring-color:          map.get($palette, blue-500);
+
+
+/* -------------------------------------------------------- */
+/*                   CSS VARS EXPORT LIST                   */
+/* -------------------------------------------------------- */
+
+// Maps exported as CSS custom properties — key becomes the variable prefix
+$css-var-tokens: (
+    color:      $colors,
+    shadow:     $shadows,
+    space:      $spaces,
+    radius:     $radii
+);
