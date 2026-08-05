@@ -1,4 +1,27 @@
 @use "sass:map";
+
+/* -------------------------------------------------------- */
+/*                          LAYOUT                          */
+/* -------------------------------------------------------- */
+
+$breakpoints: (
+    xs:     0,
+    sm:     20rem,
+    md:     48rem,
+    lg:     80rem
+);
+
+$topbar-height:             56px;
+$sidebar-width:             240px;
+$sidebar-width-collapsed:   56px;
+$detail-panel-width:        480px;
+$content-max-width:         1440px;
+
+$board-column-width:        288px;
+$board-column-gap:          12px;
+$board-card-min-height:     72px;
+
+
 /* -------------------------------------------------------- */
 /*                          COLORS                          */
 /* -------------------------------------------------------- */
