@@ -1,0 +1,82 @@
+/* -------------------------------------------------------- */
+/*                          RESET                           */
+/* -------------------------------------------------------- */
+
+// Border-box everywhere, no UA margins or padding — spacing comes from tokens only
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// Elements that carry more than margin/padding by default
+fieldset {
+    border: none;
+    min-inline-size: 0;
+}
+
+hr {
+    border: none;
+    block-size: 1px;
+}
+
+html {
+    // Prevent iOS Safari from scaling text in landscape orientation
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    // Anchor targets are not hidden behind the fixed topbar
+    scroll-padding-block-start: 4rem;
+}
+
+body {
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+}
+
+// Replaced elements behave like blocks and never overflow their container
+img, picture, video, canvas, svg {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+}
+
+// Form controls inherit typography instead of falling back to the UA font
+input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+// Headings inherit sizing from the type scale, not from the UA stylesheet
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+// Long words break instead of overflowing
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+ul, ol, menu {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+}
