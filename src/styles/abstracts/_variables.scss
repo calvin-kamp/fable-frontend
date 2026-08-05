@@ -156,3 +156,17 @@ $z-index-modal:             700;
 $z-index-tooltip:           800;
 $z-index-toast:             900;
 
+
+/* -------------------------------------------------------- */
+/*                          MOTION                          */
+/* -------------------------------------------------------- */
+
+$transition-duration-fast:              150ms;
+$transition-duration-normal:            300ms;
+$transition-duration-slow:              600ms;
+
+$transition-ease:                       cubic-bezier(0.2, 0, 0.2, 1);
+
+$transition-fast:                       #{$transition-duration-fast} #{$transition-ease};
+$transition-normal:                     #{$transition-duration-default} #{$transition-ease};
+$transition-slow:                       #{$transition-duration-slow} #{$transition-ease};
