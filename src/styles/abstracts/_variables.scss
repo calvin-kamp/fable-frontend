@@ -141,20 +141,6 @@ $letter-spacing-base:       normal;
 $letter-spacing-wide:       0.02em;
 
 
-/* -------------------------------------------------------- */
-/*                         Z-LEVELS                         */
-/* -------------------------------------------------------- */
-
-$z-index-base:              0;
-$z-index-sticky:            100;
-$z-index-sidebar:           200;
-$z-index-topbar:            300;
-$z-index-dropdown:          400;
-$z-index-drag:              500;
-$z-index-scrim:             600;
-$z-index-modal:             700;
-$z-index-tooltip:           800;
-$z-index-toast:             900;
 
 
 /* -------------------------------------------------------- */
@@ -170,3 +156,40 @@ $transition-ease:                       cubic-bezier(0.2, 0, 0.2, 1);
 $transition-fast:                       #{$transition-duration-fast} #{$transition-ease};
 $transition-normal:                     #{$transition-duration-default} #{$transition-ease};
 $transition-slow:                       #{$transition-duration-slow} #{$transition-ease};
+
+
+/* -------------------------------------------------------- */
+/*                          SIZING                          */
+/* -------------------------------------------------------- */
+
+$spaces: (
+    0:      0,
+    1:      0.25rem,
+    2:      0.5rem,
+    3:      0.75rem,
+    4:      1rem,
+    5:      1.25rem,
+    6:      1.5rem,
+    8:      2rem,
+    10:     2.5rem,
+    12:     3rem,
+    16:     4rem,
+    20:     5rem,
+);
+
+
+/* -------------------------------------------------------- */
+/*                         Z-LEVELS                         */
+/* -------------------------------------------------------- */
+
+$z-index-base:              0;
+$z-index-sticky:            100;
+$z-index-sidebar:           200;
+$z-index-topbar:            300;
+$z-index-dropdown:          400;
+$z-index-drag:              500;
+$z-index-scrim:             600;
+$z-index-modal:             700;
+$z-index-tooltip:           800;
+$z-index-toast:             900;
+
