@@ -4,6 +4,7 @@
 /*                          LAYOUT                          */
 /* -------------------------------------------------------- */
 
+// Breakpoint boundaries for mobile-first media queries
 $breakpoints: (
     xs:     0,
     sm:     20rem,
@@ -11,12 +12,14 @@ $breakpoints: (
     lg:     80rem
 );
 
+// Fixed app-shell dimensions — topbar, sidebar, detail panel, max content width
 $topbar-height:             56px;
 $sidebar-width:             240px;
 $sidebar-width-collapsed:   56px;
 $detail-panel-width:        480px;
 $content-max-width:         1440px;
 
+// Board column sizing
 $board-column-width:        288px;
 $board-column-gap:          12px;
 $board-card-min-height:     72px;
@@ -26,40 +29,49 @@ $board-card-min-height:     72px;
 /*                        COMPONENTS                        */
 /* -------------------------------------------------------- */
 
-$control-height-mobile:     44px;
-$control-height-tablet:     44px;
-$control-height-desktop:    40px;
+// Height of single-line form controls (input, select, textarea)
+$control-height-mobile:         44px;
+$control-height-tablet:         44px;
+$control-height-desktop:        40px;
 
-$button-height-sm-mobile:   36px;
-$button-height-sm-tablet:   36px;
-$button-height-sm-desktop:  32px;
+// Small button — below the 44px minimum hit target by design, for pointer-based use
+$button-height-sm-mobile:       36px;
+$button-height-sm-tablet:       36px;
+$button-height-sm-desktop:      32px;
 
-$button-height-md-mobile:   44px;
-$button-height-md-tablet:   44px;
-$button-height-md-desktop:  36px;
+// Default button height, used unless a size modifier is specified
+$button-height-md-mobile:       44px;
+$button-height-md-tablet:       44px;
+$button-height-md-desktop:      36px;
 
-$button-height-lg-mobile:   48px;
-$button-height-lg-tablet:   44px;
-$button-height-lg-desktop:  44px;
+// Large button variant, for a single emphasized action
+$button-height-lg-mobile:       48px;
+$button-height-lg-tablet:       44px;
+$button-height-lg-desktop:      44px;
 
-$button-icon-size-mobile:   44px;
-$button-icon-size-tablet:   44px;
-$button-icon-size-desktop:  36px;
+// Square icon-only buttons
+$button-icon-size-mobile:       44px;
+$button-icon-size-tablet:       44px;
+$button-icon-size-desktop:      36px;
 
-$hit-min-mobile:            44px;
-$hit-min-tablet:            44px;
-$hit-min-desktop:           32px;
+// Minimum tap target size, independent of the visible element size
+$hit-min-mobile:                44px;
+$hit-min-tablet:                44px;
+$hit-min-desktop:               32px;
 
-$choice-box-mobile:         20px;
-$choice-box-tablet:         20px;
-$choice-box-desktop:        18px;
+// Visible size of the checkbox/radio square (not the tap target)
+$choice-box-mobile:             20px;
+$choice-box-tablet:             20px;
+$choice-box-desktop:            18px;
 
 
 /* -------------------------------------------------------- */
 /*                          COLORS                          */
 /* -------------------------------------------------------- */
 
+// Raw hex ramps — never reference directly in components, use $colors below
 $palette: (
+    // Neutral ramp — surfaces, borders, text
     neutral-0:      #ffffff,
     neutral-50:     #f7f8fa,
     neutral-100:    #eff1f4,
@@ -72,6 +84,7 @@ $palette: (
     neutral-800:    #2c333d,
     neutral-900:    #1a1f26,
 
+    // Blue ramp — primary brand color
     blue-50:        #eaf2fd,
     blue-100:       #d0e2fa,
     blue-200:       #a3c6f5,
@@ -83,24 +96,30 @@ $palette: (
     blue-800:       #063469,
     blue-900:       #04244a,
 
+    // Green ramp — success states
     green-50:       #e8f6f0,
     green-500:      #1b7a55,
     green-700:      #135a3e,
 
+    // Amber ramp — warning states
     amber-50:       #fdf3e2,
     amber-500:      #8a6212,
     amber-700:      #67480d,
 
+    // Red ramp — danger states and priority escalation
     red-50:         #fdecec,
     red-500:        #c3302b,
     red-600:        #a8201b,
     red-700:        #94211d,
 
+    // Single-value accent
     purple-500:     #6c4bc7,
 
+    // Single-value accent
     teal-500:       #0f7383,
 );
 
+// Semantic aliases — what a color means, not what it's called; components use only this map
 $colors: (
     body-bg:            map.get($palette, neutral-50),
     body-text:          map.get($palette, neutral-900),
@@ -138,12 +157,14 @@ $colors: (
     disabled-bg:        map.get($palette, neutral-100),
     disabled-text:      map.get($palette, neutral-600),
 
+    // Issue type markers
     type-epic:          map.get($palette, purple-500),
     type-story:         map.get($palette, green-500),
     type-task:          map.get($palette, blue-500),
     type-bug:           map.get($palette, red-500),
     type-subtask:       map.get($palette, teal-500),
 
+    // Priority markers
     prio-highest:       map.get($palette, red-600),
     prio-high:          map.get($palette, red-500),
     prio-medium:        map.get($palette, amber-500),
@@ -156,17 +177,21 @@ $colors: (
 /*                        TYPOGRAPHY                        */
 /* -------------------------------------------------------- */
 
+// Font stacks
 $font-family-sans:          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 $font-family-mono:          "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
 
+// Body text and form controls — control stays 16px to prevent iOS Safari zoom-on-focus
 $font-size-base:            1rem;
 $font-size-control:         1rem;
 
+// Static sizes — constant across all breakpoints
 $font-size-xs:              0.75rem;
 $font-size-sm:              0.875rem;
 $font-size-lg:              1.1875rem;
 
+// Heading sizes — scale at 768px and 1280px
 $font-size-h3-mobile:       1.125rem;
 $font-size-h3-tablet:       1.25rem;
 $font-size-h3-desktop:      1.375rem;
@@ -180,35 +205,39 @@ $font-size-h1-tablet:       2.375rem;
 $font-size-h1-desktop:      2.75rem;
 
 
+// Font weight scale
 $font-weight-regular:       400;
 $font-weight-medium:        500;
 $font-weight-semibold:      600;
 $font-weight-bold:          700;
 
 
+// Line-height scale — each typographic role maps to exactly one of these
 $line-height-tight:         1.1;
 $line-height-snug:          1.35;
 $line-height-base:          1.5;
 $line-height-relaxed:       1.65;
 
 
+// Letter-spacing scale
 $letter-spacing-tight:      -0.014em;
 $letter-spacing-base:       normal;
 $letter-spacing-wide:       0.02em;
-
-
 
 
 /* -------------------------------------------------------- */
 /*                          MOTION                          */
 /* -------------------------------------------------------- */
 
+// Transition durations
 $transition-duration-fast:              150ms;
 $transition-duration-normal:            300ms;
 $transition-duration-slow:              600ms;
 
+// Standard easing curve
 $transition-ease:                       cubic-bezier(0.2, 0, 0.2, 1);
 
+// Combined shorthand — duration + easing, ready to drop into `transition:`
 $transition-fast:                       #{$transition-duration-fast} #{$transition-ease};
 $transition-normal:                     #{$transition-duration-normal} #{$transition-ease};
 $transition-slow:                       #{$transition-duration-slow} #{$transition-ease};
@@ -218,6 +247,7 @@ $transition-slow:                       #{$transition-duration-slow} #{$transiti
 /*                          SIZING                          */
 /* -------------------------------------------------------- */
 
+// Spacing scale, 4px base unit
 $spaces: (
     0:      0,
     1:      0.25rem,
@@ -238,6 +268,7 @@ $spaces: (
 /*                          RADII                           */
 /* -------------------------------------------------------- */
 
+// Border-radius scale
 $radii: (
   xs:       0.125rem,
   sm:       0.25rem,
@@ -252,6 +283,7 @@ $radii: (
 /*                         SHADOWS                          */
 /* -------------------------------------------------------- */
 
+// Elevation scale — multi-value shadows must be wrapped in parens, or the inner comma breaks the map
 $shadows: (
     xs:     0 1px 2px rgba(26, 31, 38, 0.06),
     sm:     (0 1px 3px rgba(26, 31, 38, 0.08), 0 1px 2px rgba(26, 31, 38, 0.04)),
@@ -266,6 +298,7 @@ $shadows: (
 /*                         Z-LEVELS                         */
 /* -------------------------------------------------------- */
 
+// Stacking order, lowest to highest
 $z-index-base:              0;
 $z-index-sticky:            100;
 $z-index-sidebar:           200;
@@ -282,6 +315,7 @@ $z-index-toast:             900;
 /*                       ACCESSIBILITY                      */
 /* -------------------------------------------------------- */
 
+// Single focus style used app-wide — width, offset and color of the visible focus ring
 $focus-ring-width:          0.125rem;
 $focus-ring-offset:         0.125rem;
 $focus-ring-color:          map.get($palette, blue-500);
