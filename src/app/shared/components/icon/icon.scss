@@ -1,0 +1,27 @@
+@use 'abstracts' as *;
+
+:host {
+    display: inline-block;
+}
+
+.icon {
+    --size: 1.125rem;
+
+    display: block;
+
+    width: var(--size);
+    height: var(--size);
+
+    // ── Variants ──────────────────────────────────────────
+    &--xs {
+        --size: 0.75rem;
+    }
+
+    &--sm {
+        --size: 1rem;
+    }
+
+    &--lg {
+        --size: 1.5rem;
+    }
+}
