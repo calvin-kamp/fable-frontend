@@ -11,8 +11,8 @@ body {
     font-weight: $font-weight-regular;
     line-height: $line-height-relaxed;
     letter-spacing: $letter-spacing-base;
-    color: var(--color-body-text);
-    background-color: var(--color-body-bg);
+    color: var(--color-text);
+    background-color: var(--color-surface);
 }
 
 // ── Headings ──────────────────────────────────────────────
@@ -116,7 +116,7 @@ abbr[title] {
 
 mark {
     background-color: var(--color-surface-selected);
-    color: var(--color-body-text);
+    color: var(--color-text);
 }
 
 ::selection {

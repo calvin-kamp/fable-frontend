@@ -101,6 +101,7 @@ $palette: (
     red-500:        #c3302b,
     red-600:        #a8201b,
     red-700:        #94211d,
+    red-800:        #7d1a17,
 
     // Purple - Single-value accent — Epic issue type
     purple-500:     #6c4bc7,
@@ -111,15 +112,14 @@ $palette: (
 
 // Semantic aliases — what a color means, not what it's called; components use only this map
 $colors: (
-    body-bg:            map.get($palette, neutral-50),
-    body-text:          map.get($palette, neutral-900),
-
+    surface:            map.get($palette, neutral-50),
     surface-raised:     map.get($palette, neutral-0),
     surface-sunken:     map.get($palette, neutral-100),
     surface-hover:      map.get($palette, neutral-100),
     surface-pressed:    map.get($palette, neutral-200),
     surface-selected:   map.get($palette, blue-50),
 
+    text:               map.get($palette, neutral-900),
     text-subtle:        map.get($palette, neutral-500),
     text-secondary:     map.get($palette, neutral-600),
     text-disabled:      map.get($palette, neutral-600),
@@ -140,9 +140,11 @@ $colors: (
 
     secondary:          map.get($palette, neutral-100),
     secondary-hover:    map.get($palette, neutral-200),
+    secondary-active:   map.get($palette, neutral-300),
 
     danger:             map.get($palette, red-500),
     danger-hover:       map.get($palette, red-700),
+    danger-active:      map.get($palette, red-800),
 
     disabled-bg:        map.get($palette, neutral-100),
     disabled-text:      map.get($palette, neutral-600),
