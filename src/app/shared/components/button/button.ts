@@ -10,15 +10,17 @@ type ButtonSize = 'sm' | 'md' | 'lg'
     styleUrl: './button.scss',
 })
 export class Button {
-    variant = input<ButtonVariant>('primary')
-    size = input<ButtonSize>('md')
+    readonly variant = input<ButtonVariant>('primary')
+    readonly size = input<ButtonSize>('md')
 
-    icon = input<boolean>(false)
-    disabled = input<boolean>(false)
-    loading = input<boolean>(false)
+    readonly icon = input<boolean>(false)
+    readonly disabled = input<boolean>(false)
+    readonly loading = input<boolean>(false)
 
-    modifierClasses = computed((): string => {
-        let classes: string = ''
+    protected readonly isDisabled = computed((): boolean => this.disabled() || this.loading())
+
+    protected readonly modifierClasses = computed((): string => {
+        let classes = ''
 
         classes += `button--${this.variant()}`
 

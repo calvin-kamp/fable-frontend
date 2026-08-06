@@ -1,7 +1,8 @@
 <button
+    type="button"
     class="button"
     [class]="modifierClasses()"
-    [disabled]="disabled()"
+    [disabled]="isDisabled()"
 >
     <ng-content />
 

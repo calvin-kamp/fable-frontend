@@ -40,7 +40,7 @@
     @include hoverable {
         background-color: var(--bg-hover);
         border-color: var(--border-color-hover);
-        color: var(--color-hover)
+        color: var(--color-hover);
     }
 
     &:active {
@@ -129,7 +129,7 @@
         pointer-events: none;
     }
 
-    &:disabled {
+    &--disabled {
         --bg: var(--color-disabled-bg);
         --bg-hover: var(--color-disabled-bg);
         --bg-active: var(--color-disabled-bg);
