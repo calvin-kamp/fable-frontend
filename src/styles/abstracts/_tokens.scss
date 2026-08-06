@@ -142,6 +142,12 @@ $colors: (
     secondary-hover:    map.get($palette, neutral-200),
     secondary-active:   map.get($palette, neutral-300),
 
+    success-surface:    map.get($palette, green-50),
+    success-text:       map.get($palette, green-700),
+
+    warning-surface:    map.get($palette, amber-50),
+    warning-text:       map.get($palette, amber-700),
+
     danger:             map.get($palette, red-500),
     danger-hover:       map.get($palette, red-700),
     danger-active:      map.get($palette, red-800),
