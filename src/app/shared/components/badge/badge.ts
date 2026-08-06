@@ -11,5 +11,9 @@ type BadgeType = 'primary' | 'success' | 'warning' | 'danger'
 export class Badge {
     readonly type = input<BadgeType>()
 
-    protected readonly modifierClass = computed((): string => `badge--${this.type()}`)
+    protected readonly modifierClass = computed((): string => {
+        const type: BadgeType | undefined = this.type()
+
+        return type ? `badge--${type}` : ''
+    })
 }

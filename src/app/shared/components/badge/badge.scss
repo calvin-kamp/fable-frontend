@@ -4,7 +4,6 @@
     display: inline-flex;
 }
 
-// Counts and status markers
 .badge {
     --bg: var(--color-surface-pressed);
     --color: var(--color-text);
@@ -20,7 +19,6 @@
     font-weight: $font-weight-bold;
     line-height: 1;
     white-space: nowrap;
-
 
     // ── Variants ──────────────────────────────────────────
     &--primary {
