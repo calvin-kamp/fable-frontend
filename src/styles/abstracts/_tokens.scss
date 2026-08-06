@@ -9,7 +9,7 @@ $breakpoints: (
     xs:     0,
     sm:     20rem,
     md:     48rem,
-    lg:     80rem
+    lg:     80rem,
 );
 
 // Fixed app-shell dimensions — topbar, sidebar, detail panel, max content width
@@ -24,7 +24,6 @@ $board-column-width:        288px;
 $board-column-gap:          12px;
 $board-card-min-height:     72px;
 
-
 /* -------------------------------------------------------- */
 /*                        COMPONENTS                        */
 /* -------------------------------------------------------- */
@@ -33,27 +32,47 @@ $board-card-min-height:     72px;
 // Fed into --height-* custom properties via $responsive-tokens, never read directly.
 $heights: (
     // Height of single-line form controls (input, select, textarea)
-    control:     (mobile: 44px, desktop: 40px),
+    control: (
+        mobile:         44px,
+        desktop:        40px,
+    ),
 
     // Small button — below the 44px minimum hit target by design, for pointer-based use
-    button-sm:   (mobile: 36px, desktop: 32px),
+    button-sm: (
+        mobile:         36px,
+        desktop:        32px,
+    ),
 
     // Default button height, used unless a size modifier is specified
-    button-md:   (mobile: 44px, desktop: 36px),
+    button-md: (
+        mobile:         44px,
+        desktop:        36px,
+    ),
 
     // Large button variant, for a single emphasized action
-    button-lg:   (mobile: 48px, tablet: 44px),
+    button-lg: (
+        mobile:         48px,
+        tablet:         44px,
+    ),
 
     // Square icon-only buttons
-    button-icon: (mobile: 44px, desktop: 36px),
+    button-icon: (
+        mobile:         44px,
+        desktop:        36px,
+    ),
 
     // Minimum tap target size, independent of the visible element size
-    hit-min:     (mobile: 44px, desktop: 32px),
+    hit-min: (
+        mobile:         44px,
+        desktop:        32px,
+    ),
 
     // Visible size of the checkbox/radio square (not the tap target)
-    choice-box:  (mobile: 20px, desktop: 18px),
+    choice-box: (
+        mobile:         20px,
+        desktop:        18px,
+    )
 );
-
 
 /* -------------------------------------------------------- */
 /*                          COLORS                          */
@@ -179,24 +198,34 @@ $colors: (
 $font-family-sans:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 $font-family-mono:          'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-
 // Body text and form controls — control stays 16px to prevent iOS Safari zoom-on-focus
 $font-size-base:            1rem;
 $font-size-control:         1rem;
 
 // Static sizes — constant across all breakpoints
-$font-size-xs:               0.75rem;
-$font-size-sm:                0.875rem;
-$font-size-lg:                1.1875rem;
+$font-size-xs:              0.75rem;
+$font-size-sm:              0.875rem;
+$font-size-lg:              1.1875rem;
 
 // Responsive heading sizes — role: (mobile, tablet, desktop).
 // Fed into --font-size-* custom properties via $responsive-tokens, never read directly.
 $type-scale: (
-    h3: (mobile: 1.125rem, tablet: 1.25rem,  desktop: 1.375rem),
-    h2: (mobile: 1.5rem,   tablet: 1.75rem,  desktop: 2rem),
-    h1: (mobile: 2rem,     tablet: 2.375rem, desktop: 2.75rem),
+    h3: (
+        mobile:             1.125rem,
+        tablet:             1.25rem,
+        desktop:            1.375rem,
+    ),
+    h2: (
+        mobile:             1.5rem,
+        tablet:             1.75rem,
+        desktop:            2rem,
+    ),
+    h1: (
+        mobile:             2rem,
+        tablet:             2.375rem,
+        desktop:            2.75rem,
+    ),
 );
-
 
 // Font weight scale
 $font-weight-regular:       400;
@@ -204,13 +233,11 @@ $font-weight-medium:        500;
 $font-weight-semibold:      600;
 $font-weight-bold:          700;
 
-
 // Line-height scale — each typographic role maps to exactly one of these
 $line-height-tight:         1.1;
 $line-height-snug:          1.35;
 $line-height-base:          1.5;
 $line-height-relaxed:       1.65;
-
 
 // Letter-spacing scale
 $letter-spacing-tight:      -0.014em;
@@ -235,7 +262,6 @@ $transition-fast:                       #{$transition-duration-fast} #{$transiti
 $transition-normal:                     #{$transition-duration-normal} #{$transition-ease};
 $transition-slow:                       #{$transition-duration-slow} #{$transition-ease};
 
-
 /* -------------------------------------------------------- */
 /*                          SIZING                          */
 /* -------------------------------------------------------- */
@@ -256,21 +282,19 @@ $spaces: (
     20:     5rem,
 );
 
-
 /* -------------------------------------------------------- */
 /*                          RADII                           */
 /* -------------------------------------------------------- */
 
 // Border-radius scale
 $radii: (
-  xs:       0.125rem,
-  sm:       0.25rem,
-  md:       0.375rem,
-  lg:       0.625rem,
-  xl:       1rem,
-  full:     9999px,
+    xs:         0.125rem,
+    sm:         0.25rem,
+    md:         0.375rem,
+    lg:         0.625rem,
+    xl:         1rem,
+    full:       9999px,
 );
-
 
 /* -------------------------------------------------------- */
 /*                         SHADOWS                          */
@@ -278,14 +302,13 @@ $radii: (
 
 // Elevation scale — multi-value shadows must be wrapped in parens, or the inner comma breaks the map
 $shadows: (
-    xs:     0 1px 2px rgba(26, 31, 38, 0.06),
-    sm:     (0 1px 3px rgba(26, 31, 38, 0.08), 0 1px 2px rgba(26, 31, 38, 0.04)),
-    md:     (0 4px 8px rgba(26, 31, 38, 0.08), 0 2px 4px rgba(26, 31, 38, 0.04)),
-    lg:     (0 12px 24px rgba(26, 31, 38, 0.10), 0 4px 8px rgba(26, 31, 38, 0.05)),
-    xl:     0 24px 48px rgba(26, 31, 38, 0.14),
-    drag:   0 12px 28px rgba(26, 31, 38, 0.20),
+    xs:         0 1px 2px rgba(26, 31, 38, 0.06),
+    sm:         (0 1px 3px rgba(26, 31, 38, 0.08), 0 1px 2px rgba(26, 31, 38, 0.04)),
+    md:         (0 4px 8px rgba(26, 31, 38, 0.08),0 2px 4px rgba(26, 31, 38, 0.04)),
+    lg:         (0 12px 24px rgba(26, 31, 38, 0.1),0 4px 8px rgba(26, 31, 38, 0.05)),
+    xl:         0 24px 48px rgba(26, 31, 38, 0.14),
+    drag:       0 12px 28px rgba(26, 31, 38, 0.2),
 );
-
 
 /* -------------------------------------------------------- */
 /*                         Z-LEVELS                         */
@@ -303,7 +326,6 @@ $z-index-modal:             700;
 $z-index-tooltip:           800;
 $z-index-toast:             900;
 
-
 /* -------------------------------------------------------- */
 /*                       ACCESSIBILITY                      */
 /* -------------------------------------------------------- */
@@ -312,7 +334,6 @@ $z-index-toast:             900;
 $focus-ring-width:          0.125rem;
 $focus-ring-offset:         0.125rem;
 $focus-ring-color:          map.get($palette, blue-500);
-
 
 /* -------------------------------------------------------- */
 /*                     CSS VAR EXPORT MAPS                  */
@@ -323,7 +344,7 @@ $css-var-tokens: (
     color:      $colors,
     shadow:     $shadows,
     space:      $spaces,
-    radius:     $radii
+    radius:     $radii,
 );
 
 // Responsive maps — each emitted as base + two media-query overrides via

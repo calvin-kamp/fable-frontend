@@ -1,7 +1,7 @@
-@use "sass:meta";
-@use "sass:map";
-@use "./functions" as *;
-@use "./tokens" as *;
+@use 'sass:meta';
+@use 'sass:map';
+@use 'functions' as *;
+@use 'tokens' as *;
 
 /* -------------------------------------------------------- */
 /*                         MIXINS                           */
@@ -55,22 +55,20 @@
 // joining keys with the prefix (color + primary -> --color-primary).
 // For static maps only — see responsive-vars() for breakpoint-dependent scales.
 @mixin token-to-css-vars($tokens, $prefix: null) {
-    @if meta.type-of($tokens) != "map" {
+    @if meta.type-of($tokens) != 'map' {
         @error "token-to-css-vars(): Expected a map.";
     }
 
     @each $key, $value in $tokens {
-        $name: "#{$key}";
+        $name: '#{$key}';
 
-        @if $prefix != null and $prefix != "" {
-            $name: "#{$prefix}-#{$key}";
+        @if $prefix != null and $prefix != '' {
+            $name: '#{$prefix}-#{$key}';
         }
 
-        @if meta.type-of($value) == "map" {
+        @if meta.type-of($value) == 'map' {
             @include token-to-css-vars($value, $name);
-        }
-
-        @else {
+        } @else {
             --#{$name}: #{$value};
         }
     }

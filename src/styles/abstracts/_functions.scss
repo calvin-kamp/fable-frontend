@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:math';
-@use './tokens' as *;
+@use 'tokens' as *;
 
 /* -------------------------------------------------------- */
 /*                        FUNCTIONS                         */
@@ -15,7 +15,7 @@
     }
 
     @if not map.has-key($breakpoints, $bp) {
-        @error 'breakpoint(): unknown breakpoint '#{$bp}'. Allowed: #{map.keys($breakpoints)}';
+        @error 'breakpoint(): unknown breakpoint "#{$bp}". Allowed: #{map.keys($breakpoints)}';
     }
 
     @return map.get($breakpoints, $bp);
