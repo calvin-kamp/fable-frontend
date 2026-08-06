@@ -1,0 +1,50 @@
+@use 'abstracts' as *;
+
+:host {
+    display: inline-block;
+}
+
+.chip {
+    --chip-bg: var(--color-surface-pressed);
+
+    @include flex($items: center, $gap: var(--space-1));
+    min-height: 1.5rem;
+    padding-inline: var(--space-2);
+    background-color: var(--chip-bg);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-inverse);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    white-space: nowrap;
+
+    &--removable {
+        padding-right: var(--space-1);
+    }
+
+    &__remove {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 1.375rem;
+        height: 1.375rem;
+        background-color: color-mix(in srgb, var(--color-text-inverse) 22%, transparent);
+        border-radius: var(--radius-xs);
+        color: inherit;
+        transition: background-color $transition-fast;
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            width: var(--height-hit-min);
+            height: var(--height-hit-min);
+            content: '';
+        }
+
+        @include hoverable {
+            background-color: color-mix(in srgb, var(--color-text-inverse) 40%, transparent);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<span
+    class="chip"
+    [class]="modifierClass()"
+    [style.--chip-bg]="color()"
+>
+    {{ label() }}
+
+    @if (removable()) {
+        <button
+            type="button"
+            class="chip__remove"
+            [attr.aria-label]="'remove ' + label() + ' label'"
+            (click)="remove.emit()"
+        >
+            <ui-icon
+                [name]="'close'"
+                [size]="'xs'"
+            />
+        </button>
+    }
+</span>
