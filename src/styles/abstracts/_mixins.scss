@@ -1,6 +1,7 @@
-@use 'sass:meta';
-@use './functions' as *;
-@use './tokens' as *;
+@use "sass:meta";
+@use "sass:map";
+@use "./functions" as *;
+@use "./tokens" as *;
 
 /* -------------------------------------------------------- */
 /*                         MIXINS                           */
@@ -36,25 +37,63 @@
 }
 
 // Emits a map as CSS custom properties, recursing into nested maps and
-// joining keys with the prefix (color + primary -> --color-primary)
+// joining keys with the prefix (color + primary -> --color-primary).
+// For static maps only — see responsive-vars() for breakpoint-dependent scales.
 @mixin token-to-css-vars($tokens, $prefix: null) {
-    @if meta.type-of($tokens) != 'map' {
-        @error 'token-to-css-vars(): Expected a map.';
+    @if meta.type-of($tokens) != "map" {
+        @error "token-to-css-vars(): Expected a map.";
     }
 
     @each $key, $value in $tokens {
-        $name: '#{$key}';
+        $name: "#{$key}";
 
-        @if $prefix != null and $prefix != '' {
-            $name: '#{$prefix}-#{$key}';
+        @if $prefix != null and $prefix != "" {
+            $name: "#{$prefix}-#{$key}";
         }
 
-        @if meta.type-of($value) == 'map' {
+        @if meta.type-of($value) == "map" {
             @include token-to-css-vars($value, $name);
         }
 
         @else {
             --#{$name}: #{$value};
         }
+    }
+}
+
+// Emits one custom property per role in $scale, then overrides it twice —
+// at md and lg — so the whole scale collapses into a single variable per
+// role that changes value at the breakpoint instead of three separate
+// variables. $scale entries look like: role: (mobile: .., tablet: .., desktop: ..)
+// tablet/desktop are optional per role — omit a tier if the value doesn't
+// change from the previous one; the custom property then simply keeps
+// its last declared value instead of being reset to empty.
+@mixin responsive-vars($scale, $prefix) {
+    @each $role, $sizes in $scale {
+        --#{$prefix}-#{$role}: #{map.get($sizes, mobile)};
+    }
+
+    @include breakpoint(md) {
+        @each $role, $sizes in $scale {
+            @if map.has-key($sizes, tablet) {
+                --#{$prefix}-#{$role}: #{map.get($sizes, tablet)};
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        @each $role, $sizes in $scale {
+            @if map.has-key($sizes, desktop) {
+                --#{$prefix}-#{$role}: #{map.get($sizes, desktop)};
+            }
+        }
+    }
+}
+
+// Runs responsive-vars() over every entry in a collection of responsive
+// scales — key becomes the prefix, same calling convention as token-to-css-vars()
+@mixin responsive-tokens-to-css-vars($tokens) {
+    @each $prefix, $scale in $tokens {
+        @include responsive-vars($scale, $prefix);
     }
 }

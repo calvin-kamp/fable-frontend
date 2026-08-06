@@ -29,47 +29,37 @@ $board-card-min-height:     72px;
 /*                        COMPONENTS                        */
 /* -------------------------------------------------------- */
 
-// Height of single-line form controls (input, select, textarea)
-$control-height-mobile:         44px;
-$control-height-tablet:         44px;
-$control-height-desktop:        40px;
+// Responsive component heights — role: (mobile, tablet, desktop).
+// Fed into --height-* custom properties via $responsive-tokens, never read directly.
+$heights: (
+    // Height of single-line form controls (input, select, textarea)
+    control:     (mobile: 44px, desktop: 40px),
 
-// Small button — below the 44px minimum hit target by design, for pointer-based use
-$button-height-sm-mobile:       36px;
-$button-height-sm-tablet:       36px;
-$button-height-sm-desktop:      32px;
+    // Small button — below the 44px minimum hit target by design, for pointer-based use
+    button-sm:   (mobile: 36px, desktop: 32px),
 
-// Default button height, used unless a size modifier is specified
-$button-height-md-mobile:       44px;
-$button-height-md-tablet:       44px;
-$button-height-md-desktop:      36px;
+    // Default button height, used unless a size modifier is specified
+    button-md:   (mobile: 44px, desktop: 36px),
 
-// Large button variant, for a single emphasized action
-$button-height-lg-mobile:       48px;
-$button-height-lg-tablet:       44px;
-$button-height-lg-desktop:      44px;
+    // Large button variant, for a single emphasized action
+    button-lg:   (mobile: 48px, tablet: 44px),
 
-// Square icon-only buttons
-$button-icon-size-mobile:       44px;
-$button-icon-size-tablet:       44px;
-$button-icon-size-desktop:      36px;
+    // Square icon-only buttons
+    button-icon: (mobile: 44px, desktop: 36px),
 
-// Minimum tap target size, independent of the visible element size
-$hit-min-mobile:                44px;
-$hit-min-tablet:                44px;
-$hit-min-desktop:               32px;
+    // Minimum tap target size, independent of the visible element size
+    hit-min:     (mobile: 44px, desktop: 32px),
 
-// Visible size of the checkbox/radio square (not the tap target)
-$choice-box-mobile:             20px;
-$choice-box-tablet:             20px;
-$choice-box-desktop:            18px;
+    // Visible size of the checkbox/radio square (not the tap target)
+    choice-box:  (mobile: 20px, desktop: 18px),
+);
 
 
 /* -------------------------------------------------------- */
 /*                          COLORS                          */
 /* -------------------------------------------------------- */
 
-// Raw hex ramps — never reference directly in components, use $colors below
+// Raw hue ramps — never reference directly in components, use $colors below
 $palette: (
     // Neutral ramp — surfaces, borders, text
     neutral-0:      #ffffff,
@@ -112,10 +102,10 @@ $palette: (
     red-600:        #a8201b,
     red-700:        #94211d,
 
-    // Single-value accent
+    // Purple - Single-value accent — Epic issue type
     purple-500:     #6c4bc7,
 
-    // Single-value accent
+    // Teal - Single-value accent — Subtask issue type
     teal-500:       #0f7383,
 );
 
@@ -187,22 +177,17 @@ $font-size-base:            1rem;
 $font-size-control:         1rem;
 
 // Static sizes — constant across all breakpoints
-$font-size-xs:              0.75rem;
-$font-size-sm:              0.875rem;
-$font-size-lg:              1.1875rem;
+$font-size-xs:               0.75rem;
+$font-size-sm:                0.875rem;
+$font-size-lg:                1.1875rem;
 
-// Heading sizes — scale at 768px and 1280px
-$font-size-h3-mobile:       1.125rem;
-$font-size-h3-tablet:       1.25rem;
-$font-size-h3-desktop:      1.375rem;
-
-$font-size-h2-mobile:       1.5rem;
-$font-size-h2-tablet:       1.75rem;
-$font-size-h2-desktop:      2rem;
-
-$font-size-h1-mobile:       2rem;
-$font-size-h1-tablet:       2.375rem;
-$font-size-h1-desktop:      2.75rem;
+// Responsive heading sizes — role: (mobile, tablet, desktop).
+// Fed into --font-size-* custom properties via $responsive-tokens, never read directly.
+$type-scale: (
+    h3: (mobile: 1.125rem, tablet: 1.25rem,  desktop: 1.375rem),
+    h2: (mobile: 1.5rem,   tablet: 1.75rem,  desktop: 2rem),
+    h1: (mobile: 2rem,     tablet: 2.375rem, desktop: 2.75rem),
+);
 
 
 // Font weight scale
@@ -322,13 +307,20 @@ $focus-ring-color:          map.get($palette, blue-500);
 
 
 /* -------------------------------------------------------- */
-/*                   CSS VARS EXPORT LIST                   */
+/*                     CSS VAR EXPORT MAPS                  */
 /* -------------------------------------------------------- */
 
-// Maps exported as CSS custom properties — key becomes the variable prefix
+// Static maps — emitted once as-is via token-to-css-vars(), key becomes the var prefix
 $css-var-tokens: (
     color:      $colors,
     shadow:     $shadows,
     space:      $spaces,
     radius:     $radii
+);
+
+// Responsive maps — each emitted as base + two media-query overrides via
+// responsive-tokens-to-css-vars(), key becomes the var prefix
+$responsive-tokens: (
+    font-size:  $type-scale,
+    height:     $heights,
 );

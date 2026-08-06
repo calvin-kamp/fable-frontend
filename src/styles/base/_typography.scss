@@ -24,44 +24,21 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: $font-size-h1-mobile;
+    font-size: var(--font-size-h1);
     font-weight: $font-weight-bold;
     letter-spacing: $letter-spacing-tight;
 
-    @include breakpoint(md) {
-        font-size: $font-size-h1-tablet;
-    }
-
-    @include breakpoint(lg) {
-        font-size: $font-size-h1-desktop;
-    }
 }
 
 h2 {
-    font-size: $font-size-h2-mobile;
+    font-size: var(--font-size-h2);
     font-weight: $font-weight-bold;
     letter-spacing: $letter-spacing-tight;
-
-    @include breakpoint(md) {
-        font-size: $font-size-h2-tablet;
-    }
-
-    @include breakpoint(lg) {
-        font-size: $font-size-h2-desktop;
-    }
 }
 
 h3 {
-    font-size: $font-size-h3-mobile;
+    font-size: var(--font-size-h3);
     font-weight: $font-weight-semibold;
-
-    @include breakpoint(md) {
-        font-size: $font-size-h3-tablet;
-    }
-
-    @include breakpoint(lg) {
-        font-size: $font-size-h3-desktop;
-    }
 }
 
 // h4–h6 do not scale — below h3 the hierarchy is carried by weight, not size

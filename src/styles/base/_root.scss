@@ -1,7 +1,14 @@
 @use 'abstracts' as *;
 
-:root {
-    color-scheme: light;
+/* -------------------------------------------------------- */
+/*                     CSS CUSTOM PROPERTIES                */
+/* -------------------------------------------------------- */
 
+// Single point where every SCSS token becomes a runtime CSS variable.
+// Static tokens (color, shadow, space, radius) are emitted once as-is.
+// Responsive tokens (font-size, height) are emitted as base + two
+// media-query overrides, collapsing into one variable per role.
+:root {
     @include token-to-css-vars($css-var-tokens);
+    @include responsive-tokens-to-css-vars($responsive-tokens);
 }
