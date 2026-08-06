@@ -20,6 +20,21 @@
     }
 }
 
+// Sets up a flex container in one call — every parameter has a CSS-default
+// fallback except gap, which is only emitted when passed
+@mixin flex($direction: row, $wrap: wrap, $justify: flex-start, $items: stretch, $content: stretch, $gap: null) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $items;
+    align-content: $content;
+
+    @if $gap != null {
+        gap: $gap;
+    }
+}
+
 // Hover styles only on devices with a hover-capable pointer —
 // prevents sticky hover states on touch
 @mixin hoverable {
