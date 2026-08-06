@@ -1,0 +1,164 @@
+@use 'abstracts' as *;
+
+:host {
+    display: inline-block;
+}
+
+.button {
+    --height: var(--height-button-md);
+    --padding-x: var(--space-4);
+    --font-size: #{$font-size-sm};
+
+    --bg: var(--color-primary);
+    --bg-hover: var(--color-primary-hover);
+    --bg-active: var(--color-primary-active);
+
+    --border-color: transparent;
+    --border-color-hover: var(--border-color);
+
+    --color: var(--color-text-inverse);
+    --color-hover: var(--color);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    inline-size: 100%;
+    min-block-size: var(--height);
+    padding-inline: var(--padding-x);
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--color);
+    font-weight: $font-weight-medium;
+    font-size: var(--font-size);
+    line-height: $line-height-snug;
+    white-space: nowrap;
+    transition:
+        background-color $transition-fast,
+        border-color $transition-fast,
+        color $transition-fast;
+
+    @include hoverable {
+        background-color: var(--bg-hover);
+        border-color: var(--border-color-hover);
+    }
+
+    &:active {
+        background-color: var(--bg-active);
+    }
+
+    // ── Variants ──────────────────────────────────────────
+    &--primary {
+        --bg: var(--color-primary);
+        --bg-hover: var(--color-primary-hover);
+        --bg-active: var(--color-primary-active);
+        --color: var(--color-text-inverse);
+    }
+
+    &--secondary {
+        --bg: var(--color-secondary);
+        --bg-hover: var(--color-secondary-hover);
+        --bg-active: var(--color-secondary-active);
+        --border-color: var(--color-border);
+        --border-color-hover: var(--color-border-strong);
+        --color: var(--color-text);
+    }
+
+    &--subtle {
+        --bg: transparent;
+        --bg-hover: var(--color-surface-hover);
+        --bg-active: var(--color-surface-pressed);
+        --color: var(--color-text-secondary);
+        --color-hover: var(--color-text);
+    }
+
+    &--danger {
+        --bg: var(--color-danger);
+        --bg-hover: var(--color-danger-hover);
+        --bg-active: var(--color-danger-active);
+        --color: var(--color-text-inverse);
+    }
+
+
+    &--link {
+        --bg: transparent;
+        --bg-hover: transparent;
+        --bg-active: transparent;
+        --padding-x: 0;
+        --color: var(--color-text-link);
+        --color-hover: var(--color-text-link-hover);
+
+        min-block-size: var(--height-hit-min);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+        transition:
+            background-color $transition-fast,
+            border-color $transition-fast,
+            color $transition-fast,
+            text-decoration-thickness $transition-fast;
+
+        @include hoverable {
+            text-decoration-thickness: 2px;
+        }
+    }
+
+    // ── Sizes ─────────────────────────────────────────────
+    &--sm {
+        --height: var(--height-button-sm);
+        --padding-x: var(--space-3);
+        --font-size: #{$font-size-xs};
+    }
+
+    &--lg {
+        --height: var(--height-button-lg);
+        --padding-x: var(--space-5);
+    }
+
+    &--icon {
+        --height: var(--height-button-icon);
+        --padding-x: 0;
+
+        block-size: var(--height);
+        inline-size: var(--height);
+    }
+
+    // ── States ────────────────────────────────────────────
+    &--loading {
+        color: transparent;
+        pointer-events: none;
+    }
+
+    &:disabled {
+        --bg: var(--color-disabled-bg);
+        --bg-hover: var(--color-disabled-bg);
+        --bg-active: var(--color-disabled-bg);
+        --border-color: var(--color-border-subtle);
+        --border-color-hover: var(--color-border-subtle);
+        --color: var(--color-disabled-text);
+
+        cursor: not-allowed;
+    }
+
+    &__spinner {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        inline-size: 1rem;
+        block-size: 1rem;
+        border: 2px solid currentcolor;
+        border-block-start-color: transparent;
+        border-radius: var(--radius-full);
+        color: var(--color);
+        opacity: 0.7;
+        animation: button-spin 0.7s linear infinite;
+    }
+}
+
+@keyframes button-spin {
+    to {
+        rotate: 360deg;
+    }
+}

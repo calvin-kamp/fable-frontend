@@ -1,0 +1,14 @@
+<button
+    class="button"
+    [class]="modifierClasses()"
+    [disabled]="disabled()"
+>
+    <ng-content />
+
+    @if (loading()) {
+        <div
+            class="button__spinner"
+            aria-hidden="true"
+        ></div>
+    }
+</button>
