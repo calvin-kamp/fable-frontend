@@ -19,13 +19,10 @@
     --color: var(--color-text-inverse);
     --color-hover: var(--color);
 
+    @include flex($items: center, $justify: center, $gap: var(--space-2));
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    inline-size: 100%;
-    min-block-size: var(--height);
+    width: 100%;
+    min-height: var(--height);
     padding-inline: var(--padding-x);
     background-color: var(--bg);
     border: 1px solid var(--border-color);
@@ -43,6 +40,7 @@
     @include hoverable {
         background-color: var(--bg-hover);
         border-color: var(--border-color-hover);
+        color: var(--color-hover)
     }
 
     &:active {
@@ -90,7 +88,7 @@
         --color: var(--color-text-link);
         --color-hover: var(--color-text-link-hover);
 
-        min-block-size: var(--height-hit-min);
+        min-height: var(--height-hit-min);
         text-decoration: underline;
         text-decoration-thickness: 1px;
         text-underline-offset: 0.2em;
@@ -121,8 +119,8 @@
         --height: var(--height-button-icon);
         --padding-x: 0;
 
-        block-size: var(--height);
-        inline-size: var(--height);
+        width: var(--height);
+        min-width: var(--height);
     }
 
     // ── States ────────────────────────────────────────────
@@ -145,9 +143,9 @@
     &__spinner {
         position: absolute;
         inset: 0;
+        width: 1rem;
+        height: 1rem;
         margin: auto;
-        inline-size: 1rem;
-        block-size: 1rem;
         border: 2px solid currentcolor;
         border-block-start-color: transparent;
         border-radius: var(--radius-full);
