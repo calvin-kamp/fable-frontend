@@ -11,6 +11,7 @@ type AvatarSize = 'xs' | 'sm' | 'md' | 'lg'
 export class Avatar {
     readonly name = input<string>()
     readonly size = input<AvatarSize>('md')
+    readonly more = input<number>(0)
 
     protected readonly initials = computed((): string => {
         const name: string = this.name() ?? ''
@@ -21,14 +22,19 @@ export class Avatar {
             .slice(0, 2)
             .map((word) => word[0])
             .join('')
+            .toUpperCase()
     })
 
-    protected readonly label = computed((): string => this.name() ?? 'not assigned')
+    protected readonly label = computed((): string => {
+        if (this.more() > 0) return `${this.more()} more`
+
+        return this.name() ?? 'not assigned'
+    })
 
     protected readonly modifierClasses = computed((): string => {
         const classes: string[] = []
 
-        if (!this.name()) classes.push('avatar--none')
+        if (!this.name() && this.more() === 0) classes.push('avatar--none')
         if (this.size() !== 'md') classes.push(`avatar--${this.size()}`)
 
         return classes.join(' ')

@@ -30,7 +30,7 @@
 
     &--lg {
         --size: 2.5rem;
-        --font-size: $font-size-sm;
+        --font-size: #{$font-size-sm};
     }
 
     &--none {
