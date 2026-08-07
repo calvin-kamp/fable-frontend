@@ -19,14 +19,14 @@ export class Button {
 
     protected readonly isDisabled = computed((): boolean => this.disabled() || this.loading())
 
-    protected readonly modifierClasses = computed((): string => {
-        let classes = ''
+    protected readonly modifierClasses = computed((): string[] => {
+        const classes: string[] = []
 
-        classes += `button--${this.variant()}`
+        classes.push(`button--${this.variant()}`)
 
-        if (this.icon()) classes += ' button--icon'
-        if (this.loading()) classes += ' button--loading'
-        if (this.size() !== 'md') classes += ` button--${this.size()}`
+        if (this.icon()) classes.push(' button--icon')
+        if (this.loading()) classes.push(' button--loading')
+        if (this.size() !== 'md') classes.push(` button--${this.size()}`)
 
         return classes
     })
