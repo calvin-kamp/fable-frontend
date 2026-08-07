@@ -1,0 +1,23 @@
+<ul
+    class="avatar-group"
+    [aria-label]="label()"
+>
+    @for (name of visibleNames(); track $index) {
+        <li class="avatar-group__item">
+            <ui-avatar
+                [name]="name"
+                [size]="size()"
+            />
+        </li>
+    }
+
+    @if (overflowCount() > 0) {
+        <li class="avatar-group__item">
+            <ui-avatar
+                [size]="size()"
+                [more]="overflowCount()"
+            >
+            </ui-avatar>
+        </li>
+    }
+</ul>

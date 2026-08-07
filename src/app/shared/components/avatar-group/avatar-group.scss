@@ -1,0 +1,22 @@
+@use 'abstracts' as *;
+
+:host {
+    display: inline-block;
+}
+
+.avatar-group {
+    @include flex($wrap: nowrap, $items: center);
+
+    &__item {
+        display: flex;
+    }
+
+    ui-avatar {
+        border-radius: var(--radius-full);
+        box-shadow: 0 0 0 2px var(--avatar-group-ring, var(--color-surface-raised));
+    }
+
+    &__item:not(:first-of-type) ui-avatar {
+        margin-left: -0.5rem;
+    }
+}
